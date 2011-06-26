@@ -18,6 +18,7 @@ def ulous():
 
 
 def fab():
+<<<<<<< HEAD
     """
     This does the real work for the ulous() task. Is here to provide backwards compatibility
     """

@@ -102,7 +102,7 @@ def setup_servers():
   print(yellow("Setup git..."))
   run("git config --global user.name %(GIT_USERNAME)s" % fabconf)
   run("git config --global user.email %(ADMIN_EMAIL)s" % fabconf)
-  put(fabconf['GITHUB_DEPLOY_KEY'], "~/.ssh/%s" % fabconf['GITHUB_DEPLOY_KEY'].split('/')[-1])
+  put(fabconf['GITHUB_DEPLOY_KEY'], "~/.ssh/%s" % fabconf['GITHUB_DEPLOY_KEY'].split('/')[-1], use_sudo=True)
   run("chmod 600 ~/.ssh/%s" % fabconf['GITHUB_DEPLOY_KEY'].split('/')[-1])
   run("""echo 'IdentityFile ~/.ssh/%s' >> ~/.ssh/config""" % fabconf['GITHUB_DEPLOY_KEY'].split('/')[-1])
   run('ssh-keyscan github.com >> ~/.ssh/known_hosts')
@@ -184,7 +184,7 @@ def install_gunicorn():
   with cd(fabconf['APPS_DIR']):
     _virtualenv_command("pip install gunicorn")
     print(yellow("Copying gunicorn.conf.py to project folder..."))
-    put("%s/config_files/gunicorn.conf.py" % file_path, fabconf['PROJECT_PATH'])
+    put("%s/config_files/gunicorn.conf.py" % file_path, fabconf['PROJECT_PATH'], use_sudo=True)
 
 
 def _virtualenv_command(command):

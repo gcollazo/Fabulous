@@ -1,6 +1,10 @@
 # Fabulous for EC2
 ### Deploy django apps to Amazon EC2 with ONE command
 
+First clone the project
+    
+    $ git clone https://github.com/gcollazo/Fabulous.git fabfile
+
 Just change the values of __fabulous_conf.py__ and run:    
     
     $ fab fab

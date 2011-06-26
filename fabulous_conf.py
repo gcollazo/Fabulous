@@ -40,20 +40,20 @@ fabconf['GITHUB_REPO'] = "https://github.com/gcollazo/Blank-django-Project.git"
 # Virtualenv activate command
 fabconf['ACTIVATE'] = "source /home/ubuntu/.virtualenvs/%s/bin/activate" % fabconf['PROJECT_NAME']
 
-# EC2 key
+# EC2 key. http://24v.co/j5ImEZ 
 ec2_key = ''
 
-# EC2 secret
+# EC2 secret. http://24v.co/j5ImEZ 
 ec2_secret = ''
 
-# AMI name. http://cloud.ubuntu.com/ami/
+# AMI name. http://24v.co/liLKxj 
 ec2_amis = ['ami-ccf405a5']
 
-# Name of the keypair you use in EC2
+# Name of the keypair you use in EC2. http://24v.co/ldw0HZ 
 ec2_keypair = ''
 
-# Name of the security group
+# Name of the security group. http://24v.co/kl0Jyn 
 ec2_secgroups = ['']
 
-# Type of instance to create
+# API Name of instance type. http://24v.co/mkWvpn
 ec2_instancetype = 't1.micro'

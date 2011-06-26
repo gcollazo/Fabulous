@@ -86,8 +86,8 @@ def setup_servers():
   sudo("mkdir %(VIRTUALENV_DIR)s" % fabconf)
   sudo("chown -R ubuntu:ubuntu %(VIRTUALENV_DIR)s" % fabconf)
   run('echo "export WORKON_HOME=%(VIRTUALENV_DIR)s" >> /home/%(SERVER_USERNAME)s/.profile' % fabconf)
-  run('echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/%(SERVER_USERNAME)s/.profile')
-  run("source /home/%(SERVER_USERNAME)s/.profile")
+  run('echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/%(SERVER_USERNAME)s/.profile' % fabconf)
+  run("source /home/%(SERVER_USERNAME)s/.profile" % fabconf)
 
   # Make a webapps alias
   print(yellow("Making 'webapps' alias for webapps folder..."))
@@ -102,10 +102,10 @@ def setup_servers():
   print(yellow("Setup git..."))
   run("git config --global user.name %(GIT_USERNAME)s" % fabconf)
   run("git config --global user.email %(ADMIN_EMAIL)s" % fabconf)
-  put(fabconf['GITHUB_DEPLOY_KEY_PATH'], "/home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s")
+  put(fabconf['GITHUB_DEPLOY_KEY_PATH'], "/home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s" % fabconf)
   run("chmod 600 /home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s" % fabconf)
   run("""echo 'IdentityFile /home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s' >> /home/%(SERVER_USERNAME)s/.ssh/config""" % fabconf)
-  run('ssh-keyscan github.com >> /home/%(SERVER_USERNAME)s/.ssh/known_hosts')
+  run('ssh-keyscan github.com >> /home/%(SERVER_USERNAME)s/.ssh/known_hosts' % fabconf)
 
 
 @hosts('')

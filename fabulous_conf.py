@@ -7,8 +7,14 @@ fabconf = {}
 # Username for connecting to EC2 instaces
 fabconf['SERVER_USERNAME'] = "ubuntu"
 
-# Full path of the ssh key you use to connect to EC2 instances
-fabconf['SSH_PRIVATE_KEY_PATH'] = '/path/to/.ssh/key.pem'
+# Full local path for .ssh
+fabconf['SSH_PATH'] = "/path/to/.ssh"
+
+# Name of the private key file you use to connect to EC2 instances
+fabconf['GITHUB_DEPLOY_KEY_NAME'] = "key.pem"
+
+# Don't edit. Full path of the ssh key you use to connect to EC2 instances
+fabconf['SSH_PRIVATE_KEY_PATH'] = '%s/%s' % (fabconf['SSH_PATH'], fabconf['GITHUB_DEPLOY_KEY_NAME'])
 
 # Project name: polls
 fabconf['PROJECT_NAME'] = "polls"
@@ -16,7 +22,7 @@ fabconf['PROJECT_NAME'] = "polls"
 # Where to install apps
 fabconf['APPS_DIR'] = "/home/ubuntu/webapps"
 
-# Where you want your project installed: /home/ubuntu/webapps/PROJECT_NAME
+# Where you want your project installed: /APPS_DIR/PROJECT_NAME
 fabconf['PROJECT_PATH'] = "%s/%s" % (fabconf['APPS_DIR'], fabconf['PROJECT_NAME'])
 
 # App domains
@@ -31,8 +37,11 @@ fabconf['GIT_USERNAME'] = "Server"
 # Email for the server admin
 fabconf['ADMIN_EMAIL'] = "webmaster@localhost"
 
-# Local path for deployment key you use for github
-fabconf['GITHUB_DEPLOY_KEY'] = "/path/to/.ssh/github"
+# Name of the private key file used for github deployments
+fabconf['GITHUB_DEPLOY_KEY_NAME'] = "github"
+
+# Don't edit. Local path for deployment key you use for github
+fabconf['GITHUB_DEPLOY_KEY_PATH'] = "%s/%s" % (fabconf['SSH_PATH'], fabconf['GITHUB_DEPLOY_KEY_NAME'])
 
 # Path to the repo of the application you want to install
 fabconf['GITHUB_REPO'] = "https://github.com/gcollazo/Blank-django-Project.git"

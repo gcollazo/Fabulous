@@ -60,9 +60,9 @@ def setup_servers():
   f = open("%s/config_files/nginx.conf" % file_path, 'r')
   config_file = f.read()
   f.close()
-  run(_write_to(config_file, "~/nginx.conf"))
+  run(_write_to(config_file, "/home/%(SERVER_USERNAME)s/nginx.conf" % fabconf))
   sudo("mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old")
-  sudo("mv ~/nginx.conf /etc/nginx/nginx.conf")
+  sudo("mv /home/%(SERVER_USERNAME)s/nginx.conf /etc/nginx/nginx.conf" %fanconf)
   sudo("chown root:root /etc/nginx/nginx.conf")
 
   # /etc/nginx/sites-enabled/default
@@ -71,9 +71,9 @@ def setup_servers():
   f = open("%s/config_files/nginx-app-proxy" % file_path, 'r')
   proxy_file = f.read()
   f.close()
-  run(_write_to(proxy_file % fabconf, "~/%(PROJECT_NAME)s" % fabconf))
+  run(_write_to(proxy_file % fabconf, "/home/%(SERVER_USERNAME)s/%(PROJECT_NAME)s" % fabconf))
   sudo("rm -rf /etc/nginx/sites-enabled/default")
-  sudo("mv ~/%(PROJECT_NAME)s /etc/nginx/sites-available/%(PROJECT_NAME)s" % fabconf)
+  sudo("mv /home/%(SERVER_USERNAME)s/%(PROJECT_NAME)s /etc/nginx/sites-available/%(PROJECT_NAME)s" % fabconf)
   sudo("ln -s /etc/nginx/sites-available/%(PROJECT_NAME)s /etc/nginx/sites-enabled/%(PROJECT_NAME)s" % fabconf)
   sudo("chown root:root /etc/nginx/sites-available/%(PROJECT_NAME)s" % fabconf)
 
@@ -85,13 +85,13 @@ def setup_servers():
   print(yellow("Setup virtualenvwrapper..."))
   sudo("mkdir %(VIRTUALENV_DIR)s" % fabconf)
   sudo("chown -R ubuntu:ubuntu %(VIRTUALENV_DIR)s" % fabconf)
-  run('echo "export WORKON_HOME=%(VIRTUALENV_DIR)s" >> ~/.profile' % fabconf)
-  run('echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.profile')
-  run("source ~/.profile")
+  run('echo "export WORKON_HOME=%(VIRTUALENV_DIR)s" >> /home/%(SERVER_USERNAME)s/.profile' % fabconf)
+  run('echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/%(SERVER_USERNAME)s/.profile')
+  run("source /home/%(SERVER_USERNAME)s/.profile")
 
   # Make a webapps alias
   print(yellow("Making 'webapps' alias for webapps folder..."))
-  run("""echo "alias webapps='cd %(APPS_DIR)s'" >> ~/.profile""" % fabconf)
+  run("""echo "alias webapps='cd %(APPS_DIR)s'" >> /home/%(SERVER_USERNAME)s/.profile""" % fabconf)
 
   # Create WebApps Folder
   print(yellow("Create webapps folder..."))
@@ -102,10 +102,10 @@ def setup_servers():
   print(yellow("Setup git..."))
   run("git config --global user.name %(GIT_USERNAME)s" % fabconf)
   run("git config --global user.email %(ADMIN_EMAIL)s" % fabconf)
-  put(fabconf['GITHUB_DEPLOY_KEY'], "~/.ssh/%s" % fabconf['GITHUB_DEPLOY_KEY'].split('/')[-1])
-  run("chmod 600 ~/.ssh/%s" % fabconf['GITHUB_DEPLOY_KEY'].split('/')[-1])
-  run("""echo 'IdentityFile ~/.ssh/%s' >> ~/.ssh/config""" % fabconf['GITHUB_DEPLOY_KEY'].split('/')[-1])
-  run('ssh-keyscan github.com >> ~/.ssh/known_hosts')
+  put(fabconf['GITHUB_DEPLOY_KEY_PATH'], "/home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s")
+  run("chmod 600 /home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s" % fabconf)
+  run("""echo 'IdentityFile /home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s' >> /home/%(SERVER_USERNAME)s/.ssh/config""" % fabconf)
+  run('ssh-keyscan github.com >> /home/%(SERVER_USERNAME)s/.ssh/known_hosts')
 
 
 @hosts('')

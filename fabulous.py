@@ -62,7 +62,7 @@ def setup_servers():
   f.close()
   run(_write_to(config_file, "/home/%(SERVER_USERNAME)s/nginx.conf" % fabconf))
   sudo("mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old")
-  sudo("mv /home/%(SERVER_USERNAME)s/nginx.conf /etc/nginx/nginx.conf" %fanconf)
+  sudo("mv /home/%(SERVER_USERNAME)s/nginx.conf /etc/nginx/nginx.conf" %fabconf)
   sudo("chown root:root /etc/nginx/nginx.conf")
 
   # /etc/nginx/sites-enabled/default

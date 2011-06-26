@@ -1,0 +1,25 @@
+upstream app_server {
+  server 127.0.0.1:8000 fail_timeout=0;
+}
+
+server {
+  listen 80 default;
+  client_max_body_size 4G;
+  server_name %(DOMAINS)s;
+  keepalive_timeout 5;
+  root %(PROJECT_PATH)s;
+
+  location / {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    if (!-f $request_filename) {
+      proxy_pass http://app_server;
+      break;
+    }
+  }
+  error_page 500 502 503 504 /500.html;
+  location = /500.html {
+    root /path/to/app/current/public;
+  }
+}

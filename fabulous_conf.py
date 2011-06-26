@@ -49,6 +49,9 @@ fabconf['GITHUB_REPO'] = "https://github.com/gcollazo/Blank-django-Project.git"
 # Virtualenv activate command
 fabconf['ACTIVATE'] = "source /home/ubuntu/.virtualenvs/%s/bin/activate" % fabconf['PROJECT_NAME']
 
+# Name tag for your server instance on EC2
+fabconf['INSTANCE_NAME_TAG'] = "AppServer"
+
 # EC2 key. http://24v.co/j5ImEZ 
 ec2_key = ''
 

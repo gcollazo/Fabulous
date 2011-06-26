@@ -121,6 +121,7 @@ def create_server():
     instance_type=ec2_instancetype)
 
   instance = reservation.instances[0]
+  conn.create_tags([instance.id], {"Name":fabconf['INSTANCE_NAME_TAG']})
   
   while instance.state == u'pending':
     print(yellow("Instance state: %s" % instance.state))

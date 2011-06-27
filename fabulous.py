@@ -100,8 +100,8 @@ def setup_servers():
 
   # Setup git
   print(yellow("Setup git..."))
-  run("git config --global user.name %(GIT_USERNAME)s" % fabconf)
-  run("git config --global user.email %(ADMIN_EMAIL)s" % fabconf)
+  run("git config --global user.name '%(GIT_USERNAME)s'" % fabconf)
+  run("git config --global user.email '%(ADMIN_EMAIL)s'" % fabconf)
   put(fabconf['GITHUB_DEPLOY_KEY_PATH'], "/home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s" % fabconf)
   run("chmod 600 /home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s" % fabconf)
   run("""echo 'IdentityFile /home/%(SERVER_USERNAME)s/.ssh/%(GITHUB_DEPLOY_KEY_NAME)s' >> /home/%(SERVER_USERNAME)s/.ssh/config""" % fabconf)

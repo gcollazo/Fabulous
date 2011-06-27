@@ -6,9 +6,13 @@ First clone the project
     $ git clone https://github.com/gcollazo/Fabulous.git fabfile
 
 Just change the values of __fabulous_conf.py__ and run:    
-    
-    $ fab fab
 
+    $ fab ulous
+
+or:
+
+    $ fab fab
+    
 __Make sure the cloned folder is called *fabfile*__
 
 Fabulous will create an EC2 instance, install everything and deploy your app or a blank django app. __All in less than 2 minutes__.

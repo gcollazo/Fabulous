@@ -1,4 +1,4 @@
-# Fabulous for EC2
+![Fabulous Logo](http://i.imgur.com/IMyr4.png "Fabulous")
 ### Deploy django apps to Amazon EC2 with ONE command
 
 First clone the project

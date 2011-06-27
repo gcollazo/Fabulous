@@ -32,6 +32,7 @@ def setup_servers():
 
   # Install packages
   print(green("Installing Packages..."))
+  sudo("apt-get update -qq")
 
   for deb in fabconf["APT_PACKAGES"]:
       print(yellow("Installing %s..." % deb))

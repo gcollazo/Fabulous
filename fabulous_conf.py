@@ -13,7 +13,7 @@ fabconf['SSH_PATH'] = "/path/to/.ssh"
 # List of APT packages to install
 fabconf['APT_PACKAGES'] = [
     "mysql-client", "nginx", "memcached", "git",
-    "python-setuptools", "python-dev", "build-essential", "python-pip",
+    "python-setuptools", "python-dev", "build-essential", "python-pip", "python-mysqldb",
     ]
 
 # List of pypi packages to install

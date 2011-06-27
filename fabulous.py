@@ -32,27 +32,14 @@ def setup_servers():
 
   # Install packages
   print(green("Installing Packages..."))
-  sudo("apt-get update -qq")
-  # sudo("apt-get upgrade -qq")
-  # run("echo 'mysql-server mysql-server/root_password select %s' | sudo debconf-set-selections && echo 'mysql-server mysql-server/root_password_again select %s' | sudo debconf-set-selections && sudo apt-get install -qq mysql-server" % (DB_PWD, DB_PWD))
-  print(yellow("Installing mysql-client..."))
-  sudo("apt-get install -qq mysql-client")
-  print(yellow("Installing nginx..."))
-  sudo("apt-get install -qq nginx")
-  print(yellow("Installing memcached..."))
-  sudo("apt-get install -qq memcached")
-  print(yellow("Installing python stuff..."))
-  sudo("apt-get install -qq python-setuptools python-dev build-essential python-pip")
-  # sudo("apt-get install -qq python-mysqldb")
-  print(yellow("Installing git..."))
-  sudo("apt-get -qq install git")
-  # sudo("apt-get -qq install subversion")
-  print(yellow("Installing virtualenv..."))
-  sudo("pip install virtualenv")
-  print(yellow("Installing virtualenvwrapper..."))
-  sudo("pip install virtualenvwrapper")
-  print(yellow("Installing supervisor..."))
-  sudo("pip install supervisor")
+
+  for deb in fabconf["APT_PACKAGES"]:
+      print(yellow("Installing %s..." % deb))
+      sudo("apt-get install -qq %s" % deb)
+
+  for pypi in fabconf["PIP_PACKAGES"]:
+      print(yellow("Installing %s..." % pypi))
+      sudo("pip install %s" % pypi)
 
   # Nginx setup: serv media files and proxy all other request
   # /etc/nginx/nginx.conf

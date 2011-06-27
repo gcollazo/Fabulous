@@ -10,6 +10,15 @@ fabconf['SERVER_USERNAME'] = "ubuntu"
 # Full local path for .ssh
 fabconf['SSH_PATH'] = "/path/to/.ssh"
 
+# List of APT packages to install
+fabconf['APT_PACKAGES'] = [
+    "mysql-client", "nginx", "memcached", "git",
+    "python-setuptools", "python-dev", "build-essential", "python-pip",
+    ]
+
+# List of pypi packages to install
+fabconf['PIP_PACKAGES'] = ["virtualenv", "virtualenvwrapper","supervisor"]
+
 # Name of the private key file you use to connect to EC2 instances
 fabconf['GITHUB_DEPLOY_KEY_NAME'] = "key.pem"
 

@@ -10,9 +10,16 @@ env.user = fabconf['SERVER_USERNAME']
 env.key_filename = fabconf['SSH_PRIVATE_KEY_PATH']
 
 
-def fab():
+def ulous():
   """
   *** This is what you run the first time ***
+  """
+  fab()
+
+
+def fab():
+  """
+  This does the real work for the ulous() task. Is here to provide backwards compatibility
   """
   print(green("Started..."))
   env.host_string = create_server()

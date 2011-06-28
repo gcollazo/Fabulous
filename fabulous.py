@@ -79,7 +79,7 @@ def setup_servers():
   # Make virtualenvwrapper work
   print(yellow("Setup virtualenvwrapper..."))
   sudo("mkdir %(VIRTUALENV_DIR)s" % fabconf)
-  sudo("chown -R ubuntu:ubuntu %(VIRTUALENV_DIR)s" % fabconf)
+  sudo("chown -R %(SERVER_USERNAME)s: %(VIRTUALENV_DIR)s" % fabconf)
   run('echo "export WORKON_HOME=%(VIRTUALENV_DIR)s" >> /home/%(SERVER_USERNAME)s/.profile' % fabconf)
   run('echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/%(SERVER_USERNAME)s/.profile' % fabconf)
   run("source /home/%(SERVER_USERNAME)s/.profile" % fabconf)
@@ -91,7 +91,7 @@ def setup_servers():
   # Create WebApps Folder
   print(yellow("Create webapps folder..."))
   sudo("mkdir %(APPS_DIR)s" % fabconf)
-  sudo("chown -R ubuntu:ubuntu %(APPS_DIR)s" % fabconf)
+  sudo("chown -R %(SERVER_USERNAME)s: %(APPS_DIR)s" % fabconf)
 
   # Setup git
   print(yellow("Setup git..."))

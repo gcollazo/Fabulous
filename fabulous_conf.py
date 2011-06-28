@@ -20,10 +20,10 @@ fabconf['APT_PACKAGES'] = [
 fabconf['PIP_PACKAGES'] = ["virtualenv", "virtualenvwrapper","supervisor"]
 
 # Name of the private key file you use to connect to EC2 instances
-fabconf['GITHUB_DEPLOY_KEY_NAME'] = "key.pem"
+fabconf['EC2_KEY_NAME'] = "key.pem"
 
 # Don't edit. Full path of the ssh key you use to connect to EC2 instances
-fabconf['SSH_PRIVATE_KEY_PATH'] = '%s/%s' % (fabconf['SSH_PATH'], fabconf['GITHUB_DEPLOY_KEY_NAME'])
+fabconf['SSH_PRIVATE_KEY_PATH'] = '%s/%s' % (fabconf['SSH_PATH'], fabconf['EC2_KEY_NAME'])
 
 # Project name: polls
 fabconf['PROJECT_NAME'] = "polls"

@@ -1,23 +1,15 @@
 import os.path
 
-file_path = os.path.dirname(__file__)
-
 fabconf = {}
+
+#  Do not edit
+fabconf['FABULOUS_PATH'] = os.path.dirname(__file__)
 
 # Username for connecting to EC2 instaces
 fabconf['SERVER_USERNAME'] = "ubuntu"
 
 # Full local path for .ssh
 fabconf['SSH_PATH'] = "/path/to/.ssh"
-
-# List of APT packages to install
-fabconf['APT_PACKAGES'] = [
-    "mysql-client", "nginx", "memcached", "git",
-    "python-setuptools", "python-dev", "build-essential", "python-pip", "python-mysqldb",
-    ]
-
-# List of pypi packages to install
-fabconf['PIP_PACKAGES'] = ["virtualenv", "virtualenvwrapper","supervisor"]
 
 # Name of the private key file you use to connect to EC2 instances
 fabconf['EC2_KEY_NAME'] = "key.pem"
@@ -40,11 +32,11 @@ fabconf['DOMAINS'] = "example.com www.example.com"
 # Path for virtualenvs
 fabconf['VIRTUALENV_DIR'] = "/home/%s/.virtualenvs" % fabconf['SERVER_USERNAME']
 
-# Git username for the server
-fabconf['GIT_USERNAME'] = "Server"
-
 # Email for the server admin
 fabconf['ADMIN_EMAIL'] = "webmaster@localhost"
+
+# Git username for the server
+fabconf['GIT_USERNAME'] = "Server"
 
 # Name of the private key file used for github deployments
 fabconf['GITHUB_DEPLOY_KEY_NAME'] = "github"

@@ -5,13 +5,9 @@ First clone the project
     
     $ git clone https://github.com/gcollazo/Fabulous.git fabfile
 
-Just change the values of __fabulous_conf.py__ and run:    
+Just change the values of __fabulous_conf.py__ and optionally __cookbook.py__:    
 
     $ fab ulous
-
-or:
-
-    $ fab fab
     
 __Make sure the cloned folder is called *fabfile*__
 

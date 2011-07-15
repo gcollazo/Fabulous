@@ -82,8 +82,8 @@ recipe = [
   {"action":"sudo", "params":"mv /home/%(SERVER_USERNAME)s/supervisord.conf /etc/supervisord.conf"},
   {"action":"sudo", "params":"supervisord"},
   {"action":"put", "params":{"file":"%(FABULOUS_PATH)s/templates/supervisord-init",
-                            "destination":"/home/%(SERVER_USERNAME)S/supervisord-init"}},
-  {"action":"sudo", "params":"mv /home/%(SERVER_USERNAME)S/supervisord-init /etc/init.d/supervisord"},
+                            "destination":"/home/%(SERVER_USERNAME)s/supervisord-init"}},
+  {"action":"sudo", "params":"mv /home/%(SERVER_USERNAME)s/supervisord-init /etc/init.d/supervisord"},
   {"action":"sudo", "params":"chmod +x /etc/init.d/supervisord"},
   {"action":"sudo", "params":"update-rc.d supervisord defaults"},
   {"action":"sudo", "params":"/etc/init.d/supervisord start"}

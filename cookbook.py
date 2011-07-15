@@ -10,8 +10,8 @@ recipe = [
   
   # List of APT packages to install
   {"action":"apt",
-    "params":["mysql-client", "nginx", "memcached", "git", "python-setuptools",
-      "python-dev", "build-essential", "python-pip", "python-mysqldb"],
+    "params":["mysql-client", "libmysqlclient-dev", "nginx", "memcached", "git",
+      "python-setuptools", "python-dev", "build-essential", "python-pip", "python-mysqldb"],
     "message":"Installing apt-get packages"},
   
   # List of pypi packages to install

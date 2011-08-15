@@ -60,7 +60,7 @@ ec2_key = ''
 ec2_secret = ''
 
 # AMI name. http://24v.co/liLKxj 
-ec2_amis = ['ami-ccf405a5']
+ec2_amis = ['ami-1335f37a']
 
 # Name of the keypair you use in EC2. http://24v.co/ldw0HZ 
 ec2_keypair = ''

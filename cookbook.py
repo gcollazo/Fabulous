@@ -4,6 +4,9 @@
 # Ingredients: nginx, memecached, gunicorn, supervisord, virtualenv, git
 
 recipe = [
+  # First command as regular user
+  {"action":"run", "params":"whoami"},
+
   # sudo apt-get update
   {"action":"sudo", "params":"apt-get update -qq",
     "message":"Updating apt-get"},
@@ -79,12 +82,12 @@ recipe = [
   {"action":"put_template", "params":{"template":"%(FABULOUS_PATH)s/templates/supervisord.conf",
                                       "destination":"/home/%(SERVER_USERNAME)s/my.supervisord.conf"}},
   {"action":"run", "params":"cat /home/%(SERVER_USERNAME)s/my.supervisord.conf >> /home/%(SERVER_USERNAME)s/supervisord.conf"},
+  {"action":"run", "params":"rm /home/%(SERVER_USERNAME)s/my.supervisord.conf"},
   {"action":"sudo", "params":"mv /home/%(SERVER_USERNAME)s/supervisord.conf /etc/supervisord.conf"},
   {"action":"sudo", "params":"supervisord"},
   {"action":"put", "params":{"file":"%(FABULOUS_PATH)s/templates/supervisord-init",
                             "destination":"/home/%(SERVER_USERNAME)s/supervisord-init"}},
   {"action":"sudo", "params":"mv /home/%(SERVER_USERNAME)s/supervisord-init /etc/init.d/supervisord"},
   {"action":"sudo", "params":"chmod +x /etc/init.d/supervisord"},
-  {"action":"sudo", "params":"update-rc.d supervisord defaults"},
-  {"action":"sudo", "params":"/etc/init.d/supervisord start"}
+  {"action":"sudo", "params":"update-rc.d supervisord defaults"}
 ]

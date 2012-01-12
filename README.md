@@ -11,7 +11,7 @@ Just change the values of __fabulous_conf.py__ and optionally __cookbook.py__:
     
 __Make sure the cloned folder is called *fabfile*__
 
-Fabulous will create an EC2 instance, install everything and deploy your app or a blank django app. __All in less than 2 minutes__.
+Fabulous will create an EC2 instance, install everything and deploy a blank django app. __All in less than 2 minutes__.
 
 #### Process
 * Create server on EC2

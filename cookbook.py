@@ -23,8 +23,8 @@ recipe = [
 
   # nginx
   {"action":"put", "params":{"file":"%(FABULOUS_PATH)s/templates/nginx.conf",
-    "destination":"/home/%(SERVER_USERNAME)s/nginx.conf",
-    "message":"Configuring nginx"}},
+    "destination":"/home/%(SERVER_USERNAME)s/nginx.conf"},
+    "message":"Configuring nginx"},
   {"action":"sudo", "params":"mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old"},
   {"action":"sudo", "params":"mv /home/%(SERVER_USERNAME)s/nginx.conf /etc/nginx/nginx.conf"},
   {"action":"sudo", "params":"chown root:root /etc/nginx/nginx.conf"},

@@ -44,7 +44,8 @@ recipe = [
   {"action":"run", "params":"source /home/%(SERVER_USERNAME)s/.profile"},
   
   # webapps alias
-  {"action":"run", "params":"""echo "alias webapps='cd %(APPS_DIR)s'" >> /home/%(SERVER_USERNAME)s/.profile"""},
+  {"action":"run", "params":"""echo "alias webapps='cd %(APPS_DIR)s'" >> /home/%(SERVER_USERNAME)s/.profile""",
+    "message":"Creating webapps alias"},
   
   # webapps dir
   {"action":"sudo", "params":"mkdir %(APPS_DIR)s", "message":"Creating webapps directory"},

@@ -53,20 +53,20 @@ fabconf['ACTIVATE'] = "source /home/%s/.virtualenvs/%s/bin/activate" % (fabconf[
 # Name tag for your server instance on EC2
 fabconf['INSTANCE_NAME_TAG'] = "AppServer"
 
-# EC2 key. http://24v.co/j5ImEZ 
+# EC2 key. http://bit.ly/j5ImEZ
 ec2_key = ''
 
-# EC2 secret. http://24v.co/j5ImEZ 
+# EC2 secret. http://bit.ly/j5ImEZ
 ec2_secret = ''
 
-# AMI name. http://24v.co/liLKxj 
+# AMI name. http://bit.ly/liLKxj
 ec2_amis = ['ami-1335f37a']
 
-# Name of the keypair you use in EC2. http://24v.co/ldw0HZ 
+# Name of the keypair you use in EC2. http://bit.ly/ldw0HZ
 ec2_keypair = ''
 
-# Name of the security group. http://24v.co/kl0Jyn 
+# Name of the security group. http://bit.ly/kl0Jyn
 ec2_secgroups = ['']
 
-# API Name of instance type. http://24v.co/mkWvpn
+# API Name of instance type. http://bit.ly/mkWvpn
 ec2_instancetype = 't1.micro'

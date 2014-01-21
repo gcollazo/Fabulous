@@ -3,6 +3,7 @@ from fabric.colors import green as _green, yellow as _yellow
 from fabulous_conf import *
 from cookbook import recipe
 import boto
+import boto.ec2
 import time
 
 
@@ -49,7 +50,8 @@ def _create_server():
     Creates EC2 Instance
     """
     print(_yellow("Creating instance"))
-    conn = boto.connect_ec2(ec2_key, ec2_secret)
+    conn = boto.ec2.connect_to_region(ec2_region, aws_access_key_id=ec2_key, aws_secret_access_key=ec2_secret)
+
     image = conn.get_all_images(ec2_amis)
 
     reservation = image[0].run(1, 1, ec2_keypair, ec2_secgroups,

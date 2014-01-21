@@ -59,6 +59,9 @@ ec2_key = ''
 # EC2 secret. http://bit.ly/j5ImEZ
 ec2_secret = ''
 
+#EC2 region. http://amzn.to/12jBkm7
+ec2_region = 'us-east-1'
+
 # AMI name. http://bit.ly/liLKxj
 ec2_amis = ['ami-1335f37a']
 
